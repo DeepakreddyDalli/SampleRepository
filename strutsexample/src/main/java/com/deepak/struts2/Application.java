@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer implements ApplicationRunner{
      
+	// Test
     @Autowired
     private UserService userService;
      
@@ -26,10 +27,13 @@ public class Application extends SpringBootServletInitializer implements Applica
      
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+        
     }
  
     @Bean
     public FilterRegistrationBean filterRegistrationBean() {
+    	String fielName = getClass().getClassLoader().getResource("test/log4j2.xml").getFile();
+    	System.out.println("fielName :"+fielName);
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         StrutsPrepareAndExecuteFilter struts = new StrutsPrepareAndExecuteFilter();
         registrationBean.setFilter(struts);
@@ -38,7 +42,8 @@ public class Application extends SpringBootServletInitializer implements Applica
     }
 
 	public void run(ApplicationArguments args) throws Exception {
-		// TODO Auto-generated method stub
+		String fielName = getClass().getClassLoader().getResource("test/log4j2.xml").getFile();
+		System.out.println("fielName :"+fielName);
 		
 	}
  
